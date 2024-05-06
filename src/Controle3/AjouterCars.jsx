@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { AjouterVoiture } from './Action';
+import { AjouterVoiture } from './Action.jsx';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function AjouterCars() {
@@ -56,9 +56,7 @@ export default function AjouterCars() {
                 
                
             </div>
-            <div class="button">
-                 <button> REGISTRE / LOGIN </button>
-            </div>
+           
 
             </div> 
                

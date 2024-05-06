@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AjouterVoiture } from './Action';
-import ListeCon from './ListeCon';
-import AjouterCars from './AjouterCars';
+import { AjouterVoiture } from './Action.jsx';
+import ListeCon from './ListeCon.jsx';
+import AjouterCars from './AjouterCars.jsx';
 import './Style.css';
-import ModifierVoiture from './ModifierVoiture';
-import Login from './Login';
-import Details from './Details';
-import Contact from './Contact';
-import About from './About';
-import ContactVoiture from './ContactVoiture';
+import ModifierVoiture from './ModifierVoiture.jsx';
+import Login from './Login.jsx';
+import Details from './Details.jsx';
+import Contact from './Contact.jsx';
+import About from './About.jsx';
+import ContactVoiture from './ContactVoiture.jsx';
 import Profile from './client/Profile';
-import AjouterClient from './client/AjouterClient';
-import CompteClient from './client/Compte';
+import AjouterClient from './client/AjouterClient.jsx';
+import CompteClient from './client/Compte.jsx';
+import UpdateVoiture from './client/UpdateVoiture.jsx';
+import Dashboad from './admin/Dashboade.jsx';
+import FormEditUtilisateur from './admin/FormEditUtilisateur.jsx';
+import Tutilisateur from './admin/Utilisateur.jsx';
+import Tvoiture from './admin/Tvoiture.jsx';
+import FormEditVoiture from './admin/FormEditVoiture.jsx';
 
 
 export default function AppControle() {
     const [data, setData] = useState([]);
+    const [dataU,setDataU]=useState([]);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -25,9 +32,16 @@ export default function AppControle() {
             .then(res => res.json())
             .then(res => setData(res))
     }, []);
+    useEffect(() => {
+        fetch('http://localhost:3001/utilisateur')
+            .then(res => res.json())
+            .then(res => setDataU(res))
+    }, []);
 
     useEffect(() => {
         dispatch(AjouterVoiture(data));
+        dispatch({type:"filluser",payload:dataU});
+
     }, [data]);
 
     return (
@@ -40,10 +54,22 @@ export default function AppControle() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contactvoiture/:id" element={<ContactVoiture />} />
+                <Route path="/updatevoiture/:id" element={<UpdateVoiture /> } />
+
                 <Route path="/" element={<Login />} />
                 <Route path="/user/profile/:id" element={<Profile />} />
                 <Route path="/user/ajouter/:id" element={<AjouterClient />} />
                 <Route path="/user/voiture/:id" element={<CompteClient />} />
+                <Route path="/admin/:id" element={ <Dashboad />} />
+                <Route path="/admin/utilisateur/:id" element={ <FormEditUtilisateur />} />
+                <Route path="/admin/utilisateur" element={ < Tutilisateur />} />
+                <Route path="/admin/voiture" element={ < Tvoiture />} />
+                <Route path="/admin/voiture/:id" element={ <FormEditVoiture />} />
+
+                
+
+
+
 
 
 

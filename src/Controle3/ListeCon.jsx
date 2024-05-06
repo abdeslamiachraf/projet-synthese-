@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { DeleteVoiture } from './Action';
+import { DeleteVoiture } from './Action.jsx';
 
 export default function ListeCon() {
     const voiture = useSelector(state => state.voiture);
@@ -43,9 +43,7 @@ export default function ListeCon() {
                 
                
             </div>
-            <div class="button">
-                 <button> REGISTRE / LOGIN </button>
-            </div>
+           
 
             </div> 
                
@@ -63,10 +61,12 @@ export default function ListeCon() {
                     <input type="text" placeholder="Search ... "/>
                     <img src="search.png" alt=""/>
                 </div>
-            </div><br /><br />
+            </div>
+            <div className="container mt-5">
+                <h1 style={{visibility:"hidden"}}>List Cars</h1>
+            </div>
             
-            <h2>,</h2>
-<div className="container-fluid">
+<div className="container">
     <div className="row">
         <nav className="" style={{display: "flex", justifyContent: "space-around"}}>
             <input className="form-control w-25" type="search" placeholder="Search ...." aria-label="Search" onChange={(e)=>setRecherch(e.target.value)} />
@@ -79,7 +79,6 @@ export default function ListeCon() {
                     <option value="classic">Classic</option>
                 </select>
             </div>
-            <Link to='/ajouter' className='btn btn-ajouter'>Ajouter Votre Voiture</Link>
         </nav>
     </div>
 </div>

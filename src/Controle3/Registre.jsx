@@ -12,7 +12,14 @@ export default function Registre() {
     function handleSub(e){
         e.preventDefault()
         data.map((valuer)=>{
-            return valuer.password ==password && valuer.email == email ? navigate('/listevoiture'):undefined
+            if(valuer.password ==password && valuer.email == email ){
+            if(valuer.role=="client"){
+            return navigate(`/user/profile/${valuer.id}`)}
+            else if (valuer.role=="admin"){
+                    return navigate(`/admin/${valuer.id}`)
+            }
+        
+        }
         })
         
     }
@@ -22,7 +29,7 @@ export default function Registre() {
      <h1>Sign in</h1>
                  <form onSubmit={handleSub} >
                     <input type="text" name="" id="" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email*" />
-                    <input type="text" name="" id="" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password*" />
+                    <input type="password" name="" id="" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password*" />
                     <a href="#">Forget Password ?</a>
                     <button>Sign in</button>
                     <p>

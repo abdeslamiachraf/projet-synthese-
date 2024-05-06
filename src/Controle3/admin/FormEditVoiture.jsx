@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import "./style.css"
-import "./script.js"
 import { DeleteVoiture } from '../Action.jsx';
+import { useSelector } from 'react-redux';
 
-export default function Profile() {
+export default function FormEditVoiture() {
+  const { id } = useParams();
+
      // Function to generate a unique file name
     const generateUniqueFileName = () => {
         return `${Date.now()}_${Math.floor(Math.random() * 1000000)}.jpg`;
     };
-  const { id } = useParams();
 
     // State variables
     const [data, setData] = useState([]);
@@ -43,8 +43,8 @@ export default function Profile() {
     // Function to handle user registration
     const handleUserRegistration = () => {
        const filepath=`../../../uploads/${uniqueFileName}`
-        fetch('http://localhost:3001/voiture', {
-            method: "POST",
+        fetch('http://localhost:3001/voiture/'+id, {
+            method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -73,6 +73,18 @@ export default function Profile() {
             console.error('Error during registration:', error);
         });
     };
+    const voiture=useSelector(state=>state.voiture)
+    useEffect(()=>{
+        const findvoiture=voiture.find((v)=>v.id==id)
+        if(findvoiture){
+            setClasse(findvoiture.class)
+            setColor(findvoiture.color)
+            setStartProduction(findvoiture.start_production)
+            setTitle(findvoiture.title)
+            setClasse(findvoiture.class)
+
+        }
+    },[id,voiture])
 
     const handleImageUpload = () => {
                 if (!image) {
@@ -133,29 +145,26 @@ export default function Profile() {
                     </div>
                     <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <Link to={`/user/profile/${id}`}class="sidebar-link">
+                    <Link to={`/admin`}class="sidebar-link">
                         <img src="../../page_admin_image/dashboard (1).svg" alt="" />
                         <span>Dashboard</span>
                     </Link>
                 </li>
                 <li class="sidebar-item">
-                    <Link to={`/user/ajouter/${id}`} class="sidebar-link">
+                    <Link to={`/admin/voiture`} class="sidebar-link">
                         <img src="../../page_admin_image/user-id-svgrepo-com (1).svg" alt="" />
 
-                        <span> voiture</span>
+                        <span> Voiture</span>
                     </Link>
                 </li>
                 <li class="sidebar-item">
-                    <Link to={`/user/voiture/${id}`} class="sidebar-link">
+                    <Link to={`/admin/utilisateur`} class="sidebar-link">
                         <img src="../../page_admin_image/user-profile-svgrepo-com.svg" alt="" />
 
-                        <span> Comptes </span>
+                        <span> Utilisateur </span>
                     </Link>
                 </li>
-                
-                
-               
-            </ul>
+                </ul>
                     <div class="sidebar-footer">
                         <a href="#" class="sidebar-link">
                             <span>Copyright@loc-doc 2023</span>
@@ -170,11 +179,7 @@ export default function Profile() {
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
                                     <a href="/" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                        <span>
-                                            {data.find((value, key) => {
-                                                return String(value.id) === String(id) 
-                                            })?.username}
-                                        </span>
+                                       
                                         <img src="../../page_admin_image/Power.png" class="avatar img-fluid" alt="" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end rounded">
@@ -189,10 +194,7 @@ export default function Profile() {
                     <main class="content px-5 py-4">
                         <div class="container-fluid">
                             <div class="mb-3 w-100 px-5">
-                                <h3 class="fw-bold fs-4 mb-3 text-primary">Bonjour , {data.find((value, key) => {
-                                    return String(value.id) === String(id);
-                                })?.username} </h3>
-                                                    <h2 className="text-seccuss">Ajouter un Voiture </h2>
+                                                    <h2 className="text-seccuss">Modifier un Voiture </h2>
                        <form onSubmit={handleSub} className="row g-3 py-5">
   <div className="col-md-6">
       <label htmlFor="title" className="form-label">

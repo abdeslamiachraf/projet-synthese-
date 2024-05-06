@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Registre from './Registre';
-import Incription from './Incription';
+import Registre from './Registre.jsx';
+import Incription from './Incription.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
@@ -75,7 +75,7 @@ export default function Login() {
                     <h2 class="h1">FIND THE RIGHT</h2>
                     <h2> CAR FOR YOU.</h2>
                     <p>We have more than a thousand cars for you to choose.</p>
-                    <button>Read More</button>
+                    <button><a href="#e" className='text-white'>Read More</a></button>
                 </div>
             </div>
 
@@ -115,7 +115,7 @@ export default function Login() {
                 </div>
             </div>
 
-            <div class="fouter">
+            <div class="fouter" id='e'>
                 <div class="liste">
                     <h2>ABOUT US :</h2>
                     <ul>

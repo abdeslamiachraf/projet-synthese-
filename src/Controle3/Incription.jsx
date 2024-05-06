@@ -15,6 +15,7 @@ export default function Inscription() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                role:"client",
                 username: username,
                 email: email,
                 password: password

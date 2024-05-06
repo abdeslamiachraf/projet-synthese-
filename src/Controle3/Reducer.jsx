@@ -1,5 +1,6 @@
 const initialeSate={
-    voiture:[]
+    voiture:[],
+    utilisateur:[]
 }
 const Reducervoiture=(state=initialeSate,action)=>{
     switch(action.type){
@@ -22,6 +23,11 @@ const Reducervoiture=(state=initialeSate,action)=>{
         ...state,
         voiture: state.voiture.filter(valeur => parseInt(valeur.id) !== parseInt(action.payload))
     };
+    case 'filluser':
+        return {
+            ...state,
+            utilisateur: [...state.utilisateur,...action.payload]
+        };
 
                 default:
                         return state

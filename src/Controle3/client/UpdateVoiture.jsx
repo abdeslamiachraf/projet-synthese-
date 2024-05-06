@@ -5,8 +5,9 @@ import "./style.css"
 import "./script.js"
 import { DeleteVoiture } from '../Action.jsx';
 
-export default function Profile() {
+export default function UpdateVoiture() {
      // Function to generate a unique file name
+    
     const generateUniqueFileName = () => {
         return `${Date.now()}_${Math.floor(Math.random() * 1000000)}.jpg`;
     };
@@ -21,6 +22,7 @@ export default function Profile() {
     const [prevPrice, setPrevPrice] = useState('');
     const [startProduction, setStartProduction] = useState('');
     const [color, setColor] = useState('');
+    const [datav,setDatav]=useState([]);
 
     // Fetch data from server on component mount
     useEffect(() => {
@@ -34,7 +36,19 @@ export default function Profile() {
             .then(res => setData(res))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
+    useEffect(()=>{
+fetch('http://localhost:3001/voiture')
+.then(data=>data.json())
+.then(data=>setDatav(data))
+    },[])
+useEffect(()=>{
+    const voit=datav.find((value,key)=>{
+        if( value.user=id ) {setTitle(value.title);setClasse(value.classe);setPrevPrice(value.prevPrice); setColor(value.color); setStartProduction(value.start_production);setImage(value.img)}
+        return 0
+    })
+   
 
+},[id])
 
 
    
@@ -43,8 +57,8 @@ export default function Profile() {
     // Function to handle user registration
     const handleUserRegistration = () => {
        const filepath=`../../../uploads/${uniqueFileName}`
-        fetch('http://localhost:3001/voiture', {
-            method: "POST",
+        fetch(`http://localhost:3001/voiture/${id}`, {
+            method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -169,7 +183,7 @@ export default function Profile() {
                         <div class="navbar-collapse collapse">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="/" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                    <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                         <span>
                                             {data.find((value, key) => {
                                                 return String(value.id) === String(id) 
@@ -252,7 +266,7 @@ export default function Profile() {
       </label>
     </div>
     <div className="col-12">
-      <button type="submit" className="btn btn-primary btn-block">Add Car</button>
+      <button type="submit" className="btn btn-primary btn-block">Modifier Car</button>
     </div>
   </form>
 

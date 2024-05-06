@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { Link,useParams } from 'react-router-dom';
-import { DeleteVoiture } from './Action';
+import { DeleteVoiture } from './Action.jsx';
 
 export default function About() {
     const [formData, setFormData] = useState({
@@ -50,10 +50,7 @@ export default function About() {
                 
                
             </div>
-            <div class="button">
-                 <button> REGISTRE / LOGIN </button>
-            </div>
-
+           
             </div> 
                
             </div>

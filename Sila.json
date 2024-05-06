@@ -358,7 +358,7 @@
       "prevPrice": "1254 dh",
       "start_production": "2024-04-12",
       "color": "blue",
-      "img": "1712185079369_996261.jpg",
+      "img": "uploads/1712185079369_996261.jpg",
       "username": ""
     },
     {
@@ -368,7 +368,7 @@
       "prevPrice": "1811999",
       "start_production": "2024-04-18",
       "color": "white",
-      "img": "1712185459135_461897.jpg",
+      "img": "uploads/1712185459135_461897.jpg",
       "username": ""
     },
     {
@@ -378,7 +378,7 @@
       "prevPrice": "1811999",
       "start_production": "2024-04-18",
       "color": "white",
-      "img": "1712185644119_269857.jpg",
+      "img": "uploads/1712185644119_269857.jpg",
       "username": ""
     },
     {
@@ -388,7 +388,7 @@
       "prevPrice": "1811999",
       "start_production": "2024-04-10",
       "color": "white",
-      "img": "1712186070956_199960.jpg",
+      "img": "uploads/1712186070956_199960.jpg",
       "username": ""
     },
     {
@@ -398,7 +398,7 @@
       "prevPrice": "5000dh",
       "start_production": "2024-04-11",
       "color": "green",
-      "img": "../../../uploads/1712187290042_970170.jpg",
+      "img": "uploads/1712187290042_970170.jpg",
       "username": ""
     },
     {
@@ -408,42 +408,115 @@
       "prevPrice": "1811999",
       "start_production": "2024-04-25",
       "color": "white",
-      "img": "../../../uploads/1712187395760_170562.jpg",
+      "img": "uploads/1712187395760_170562.jpg",
+      "username": ""
+    },
+    {
+      "id": "a5a4",
+      "class": "sport",
+      "title": "nissan",
+      "prevPrice": "1200",
+      "start_production": "2024-04-13",
+      "color": "black",
+      "img": "../../../uploads/1712229099282_259068.jpg",
+      "username": ""
+    },
+    {
+      "id": "a5a4",
+      "class": "normal",
+      "title": "logo",
+      "prevPrice": "120",
+      "start_production": "2024-04-18",
+      "color": "black",
+      "img": "uploads/1712229660997_249006.jpg",
+      "username": ""
+    },
+    {
+      "id": "c143",
+      "class": "",
+      "title": "",
+      "prevPrice": "",
+      "start_production": "",
+      "color": "",
+      "img": "../../../uploads/1712232801636_342777.jpg",
+      "username": ""
+    },
+    {
+      "user": "6c52",
+      "class": "",
+      "title": "cars 3",
+      "prevPrice": "400",
+      "start_production": "",
+      "color": "white",
+      "img": "../../../uploads/1712779861214_38815.jpg",
+      "username": "",
+      "id": "6c52"
+    },
+    {
+      "id": "c67b",
+      "user": "3973",
+      "class": "luxury",
+      "title": "adnane",
+      "prevPrice": "1520",
+      "start_production": "2024-04-12",
+      "color": "black",
+      "img": "../../../uploads/1713864728891_519797.jpg",
+      "username": ""
+    },
+    {
+      "id": "da66",
+      "user": "b316",
+      "class": "luxury",
+      "title": "firary",
+      "prevPrice": "1500",
+      "start_production": "2024-04-09",
+      "color": "blue",
+      "img": "../../../uploads/1713965140415_56261.jpg",
       "username": ""
     }
   ],
   "utilisateur": [
     {
-      "password": "achraf",
-      "email": "achraf@gmail.com",
+      "username": "achraf",
+      "email": "achraftest@gmail.com",
+      "password": "achraf123",
+      "role": "admin",
       "id": "3973"
     },
     {
+      "username": "assia",
       "password": "assia",
       "email": "assia@gmail.com",
-      "id": "a33e"
+      "id": "a33e",
+      "role": "client"
     },
     {
-      "id": "3af9",
-      "password": "bentesta",
-      "email": "bentesta19@gmail.com"
+      "username": "bentesta",
+      "email": "bentesta@gmail.ocm",
+      "password": "achraftesta",
+      "role": "admin",
+      "id": "3af9"
     },
     {
-      "id": "b987",
-      "password": "bermuda",
-      "email": "BERMUDA@gmail.com"
+      "username": "achraf14",
+      "email": "achraf14@gmail.com",
+      "password": "achraf123",
+      "role": "client",
+      "id": "b987"
     },
     {
       "id": "91df",
       "username": "achraf",
       "email": "achraf@gmail.com",
-      "password": "achraf123"
+      "password": "achraf123",
+      "role": "client"
     },
     {
-      "id": "440e",
       "username": "hamza",
       "email": "hamza@gmail.com",
-      "password": "hamza123"
+      "password": "achraf123",
+      "role": "client",
+      "id": "440e"
     },
     {
       "id": "2983",
@@ -468,6 +541,18 @@
       "username": "mouad",
       "email": "mouad@gmail.com",
       "password": "achraf123"
+    },
+    {
+      "id": "a5a4",
+      "username": "adnane",
+      "email": "adnane@gmail.com",
+      "password": "adnane123"
+    },
+    {
+      "username": "acvjvhijp",
+      "email": "bijbjijij@gmai.l.com",
+      "password": "snsnlcnncsl",
+      "id": "c143"
     }
   ]
 }

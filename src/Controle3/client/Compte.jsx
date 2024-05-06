@@ -13,7 +13,7 @@ export default function CompteClient() {
 			document.querySelector("#sidebar").classList.toggle("expand");
 		});
 	});
-	const voiture = useSelector(state => state.voiture.filter((v,i)=>v.id==id));
+	const voiture = useSelector(state => state.voiture.filter((v,i)=>v.user==id));
 	
 
     const [data, setData] = useState([]);
@@ -29,12 +29,17 @@ export default function CompteClient() {
 
 
 
-  
+    const DeleteV=(iad)=>{
+    fetch(`http://127.0.0.1:3001/voiture/${iad}`,{
+        method:"DELETE",
+    })
+    console.log(iad)
+}
        
   return ( <>
    
-			<div class="wrapper">
-        <aside id="sidebar" >
+			<div class="wrapper ">
+        <aside id="sidebar" className='expand ' style={{height:"50rem"}} >
             
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link">
@@ -74,7 +79,7 @@ export default function CompteClient() {
                 
                
             </ul>
-            <div class="sidebar-footer">
+            <div   class="  sidebar-footer">
                 <a href="#" class="sidebar-link">
                     <span>Copyright@loc-doc 2023</span>
                 </a>
@@ -88,7 +93,7 @@ export default function CompteClient() {
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <a href="/" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
 							<span>
     {data.find((value, key) => {
         return String(value.id) === String(id);
@@ -112,7 +117,12 @@ export default function CompteClient() {
 	<div className="carsdisplay2">
                             {voiture.map((car, index) => (
                                 <div class="cardvoiture" key={index}>
+                                  
+
                                 <div class="image">
+                                    
+                                <Link to={`/updatevoiture/${car.id}`} className='btn ' >Modifier</Link>
+                                    <button onClick={()=>DeleteV(car.id)} style={{float:"right"}} class="btn">Supprimer  </button>
                                     <img src={`../../../uploads/${car.img}`} alt="" />
                                 </div>
 
@@ -121,8 +131,11 @@ export default function CompteClient() {
                                     <p>
                                     <p>Price: {car.prevPrice} DH</p>
                                     <p>Class: {car.class}</p>
+                                    <p>Color: {car.color}</p>
+
+
                                     </p>
-                                    <Link to={`/contactvoiture/${car.id}`} class="btn">Contact</Link>
+                                  
                                     
                                 </div>
                                 </div>
@@ -140,29 +153,6 @@ export default function CompteClient() {
     </>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

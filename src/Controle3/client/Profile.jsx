@@ -5,13 +5,8 @@ import "./script.js"
 import { useSelector,useDispatch } from 'react-redux';
 import { DeleteVoiture } from '../Action.jsx';
 export default function Profile() {
-	document.addEventListener("DOMContentLoaded", function() {
-		const hamBurger = document.querySelector(".toggle-btn");
+const [username,setUsername]=useState('')
 	
-		hamBurger.addEventListener("click", function () {
-			document.querySelector("#sidebar").classList.toggle("expand");
-		});
-	});
 	const voiture = useSelector(state => state.voiture);
 	const [rechere,setRecherch]=useState('')
     const [selecte,setSelecte]=useState('')
@@ -26,23 +21,22 @@ export default function Profile() {
 	const { id } = useParams();
     const [data, setData] = useState([]);
     const [sidebarExpanded, setSidebarExpanded] = useState(false);
+    const users=useSelector(state=>state.utilisateur)
+    useEffect(()=>{
 
-    useEffect(() => {
-        fetch('http://localhost:3001/utilisateur')
-            .then(res => res.json())
-            .then(res => setData(res));
-    }, []);
+        const findUser = users.find((user) => user.id === id);
+        if (findUser) {
+            setUsername(findUser.username);
+        } else {
+            window.location = "/";
+        }
+    },[id,users])
 
-   data.find(value => String(value.id) === String(id));
-
-
-
-  
        
   return ( <>
    
-			<div class="wrapper">
-        <aside id="sidebar">
+			<div class="wrapper" >
+        <aside id="sidebar" className='expand' style={{position:"fixe"}}>
             
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link">
@@ -96,11 +90,9 @@ export default function Profile() {
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <a href="/" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
 							<span>
-    {data.find((value, key) => {
-        return String(value.id) === String(id);
-    })?.username}
+    {username}
 </span>
                                 <img src="../../page_admin_image/Power.png" class="avatar img-fluid" alt="" />
                             </a>
@@ -115,9 +107,7 @@ export default function Profile() {
             <main class="content px-5 py-4">
                 <div class="container-fluid ">
                     <div class="mb-3 w-100 px-2">
-                        <h3 class="fw-bold fs-4 mb-3 text-primary">Bonjour   , {data.find((value, key) => {
-        return String(value.id) === String(id);
-    })?.username} </h3>
+                        <h3 class="fw-bold fs-4 mb-3 text-primary">Bonjour  {username} </h3>
 <div className="container-fluid my-5">
     <div className="row">
         <nav className="" style={{display: "flex", justifyContent: "space-around"}}>
