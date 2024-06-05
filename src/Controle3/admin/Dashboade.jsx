@@ -10,18 +10,10 @@ export default function Dashboard() {
     const voiture = useSelector(state => state.voiture);
 
     const users=useSelector(state => state.utilisateur);
-    useEffect(() => {
-      const findUser = users.find((user) => user.id === id);
-      if (findUser) {
-          setUsername(findUser.username);
-      } else {
-          window.location = "/";
-      }
-  }, [id, users]);
+
   
 
     useEffect(() => {
-        // Chart.js code to create and render the charts
         const chartOptions = {
             scales: {
                 y: {
@@ -97,7 +89,6 @@ export default function Dashboard() {
             options: chartOptions
         });
 
-        // Clean up function to destroy the charts when component unmounts
         return () => {
             chart1.destroy();
             chart2.destroy();
@@ -125,23 +116,30 @@ export default function Dashboard() {
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <Link to={`/admin`}class="sidebar-link">
+                    <Link to={`/admin/${id}`}class="sidebar-link">
                         <img src="../../page_admin_image/dashboard (1).svg" alt="" />
                         <span>Dashboard</span>
                     </Link>
                 </li>
                 <li class="sidebar-item">
-                    <Link to={`/admin/voiture`} class="sidebar-link">
+                    <Link to={`/admin/voitures/${id}`} class="sidebar-link">
                         <img src="../../page_admin_image/user-id-svgrepo-com (1).svg" alt="" />
 
-                        <span> Voiture</span>
+                        <span> Voitures</span>
                     </Link>
                 </li>
                 <li class="sidebar-item">
-                    <Link to={`/admin/utilisateur`} class="sidebar-link">
+                    <Link to={`/admin/utilisateurs/${id}`} class="sidebar-link">
                         <img src="../../page_admin_image/user-profile-svgrepo-com.svg" alt="" />
 
-                        <span> Utilisateur </span>
+                        <span> Utilisateurs </span>
+                    </Link>
+                </li>
+                <li class="sidebar-item">
+                    <Link to={`/admin/contact/${id}`} class="sidebar-link">
+                    <i class="lni lni-package w-10"></i>
+
+                        <span> Boite de Message </span>
                     </Link>
                 </li>
                 
@@ -177,7 +175,7 @@ export default function Dashboard() {
     {/* Canvas elements to render the charts */}
     <canvas id="myChart1" width="400" height="400"></canvas>
     <canvas id="myChart2" width="400" height="400"></canvas>
-    <div className="container mx-auto">
+    <div className="py-5 px-5 mx-auto">
     <canvas id="myChart3" width="400"  height="400"></canvas>
 
     </div>

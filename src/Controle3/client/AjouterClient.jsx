@@ -6,13 +6,11 @@ import "./script.js"
 import { DeleteVoiture } from '../Action.jsx';
 
 export default function Profile() {
-     // Function to generate a unique file name
     const generateUniqueFileName = () => {
         return `${Date.now()}_${Math.floor(Math.random() * 1000000)}.jpg`;
     };
   const { id } = useParams();
 
-    // State variables
     const [data, setData] = useState([]);
     const [username, setUsername] = useState("");
     const [image, setImage] = useState(null);
@@ -22,7 +20,6 @@ export default function Profile() {
     const [startProduction, setStartProduction] = useState('');
     const [color, setColor] = useState('');
 
-    // Fetch data from server on component mount
     useEffect(() => {
         fetch('http://localhost:3001/utilisateur')
             .then(res => {

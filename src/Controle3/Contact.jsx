@@ -1,28 +1,38 @@
 
 import React, { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import { Link,useParams } from 'react-router-dom';
+import { Link,useNavigate,useParams } from 'react-router-dom';
 import { DeleteVoiture } from './Action.jsx';
 
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+const [name,setName]=useState('')
+const [email,setEmail]=useState('')
+const [message,setMessage]=useState('')
+const [telephone,setTelephone]=useState('')
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
+const navigate=useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        setFormData({
-            name: '',
-            email: '',
-            message: ''
-        });
+        fetch('http://localhost:3001/contact',{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+                
+            },
+            body:JSON.stringify({
+                name:name,
+                email:email,
+                telephone:telephone,
+                message:message
+            })
+        }).then((r)=>{
+            if(r.ok){
+                alert('votre réservation envoyer ')
+            }
+            navigate('/listevoiture')
+        })
+
+      
     };
 
     return (
@@ -72,19 +82,23 @@ export default function Contact() {
             <h2 style={{display:"hidden"}}>Contact Nous</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} required />
+                    <label htmlFor="name">Nom & Prénom:</label>
+                    <input type="text" className="form-control" value={name} onChange={(e)=>setName(e.target.value)} required />
+                </div> 
+                <div className="form-group">
+                    <label htmlFor="name">Téléphone:</label>
+                    <input type="text" className="form-control" value={telephone} onChange={(e)=>setTelephone(e.target.value)} required />
                 </div> 
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                    <input type="email" className="form-control" value={email} onChange={(e)=>setEmail(e.target.value)} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="message">Message:</label>
-                    <textarea className="form-control" id="message" name="message" value={formData.message} onChange={handleChange} required />
+                    <textarea className="form-control"  value={message} onChange={(e)=>setMessage(e.target.value)} required />
                 </div>
                 <div style={{display: "flex", justifyContent:"center"}}>
-  <button type="submit" class="btn btn-primary my-5 mx-5 w-30">Submit</button>
+  <button type="submit" class="btn btn-primary my-5 mx-5 w-30">Envoyer</button>
 </div>
 
             </form>

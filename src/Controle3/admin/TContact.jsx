@@ -1,15 +1,14 @@
-
 import React, { useState ,useEffect } from 'react'
 import { Link,useParams } from 'react-router-dom';
 
 import { useSelector,useDispatch } from 'react-redux';
 import { DeleteVoiture } from '../Action.jsx';
-export default function Tvoiture() {
+export default function TContact() {
 
   function handleSupprimer(idd){
-    let elete=window.confirm("veuillez vraiment supprimer utilisateur")
+    let elete=window.confirm("veuillez vraiment supprimer message")
   if(elete){
-    fetch('http://localhost:3001/utilisateur/'+idd,{
+    fetch('http://localhost:3001/cantact/'+idd,{
   method:"DELETE"
 })}
 
@@ -30,21 +29,29 @@ alert('Utilisateur Supprimer Bien')
     
 	const { id } = useParams();
     const [data, setData] = useState([]);
+    const [contact, setContact] = useState([]);
+
     const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:3001/utilisateur')
             .then(res => res.json())
             .then(res => setData(res));
+            fetch('http://localhost:3001/contact')
+            .then(res => res.json())
+            .then(res => setContact(res));
+            
+
     }, []);
 
  console.log ( data.find(value => String(value.id) === String(id))
 )
 
+
        
   return ( <>
    
-			<div class="wrapper" >
+			<div class="wrapper" style={{height:"100rem"}} >
         <aside id="sidebar" className='expand' style={{position:"fixe"}}>
             
             <li class="sidebar-item">
@@ -90,6 +97,8 @@ alert('Utilisateur Supprimer Bien')
                 </li>
                 
                 
+                
+                
                
             </ul>
             <div class="sidebar-footer">
@@ -123,6 +132,7 @@ alert('Utilisateur Supprimer Bien')
                 </div>
             </nav>
             <main class="content px-5 py-4">
+            
 <div
   class="table-responsive"
 >
@@ -131,39 +141,34 @@ alert('Utilisateur Supprimer Bien')
   >
     <thead class="table-light">
       <caption>
-        Table Votiure
+        Table Utilisateur
       </caption>
       <tr>
         <th>Id</th>
-        <th>Image</th>
-        <th>Title</th>
-        <th>Class</th>
-        <th>Prix</th>
+        <th>Nom & Prénom</th>
+        <th>Téléphone</th>
+        <th>message</th>
         <th>Action</th>
-
       </tr>
     </thead>
     <tbody class="table-group-divider">
       {
-        voitureT.map((values,index)=>{
+        contact.map((values,index)=>{
           return <tr
           class="table-primary"
         >
           <td scope="row"> {values.id} </td>
-          <td> <img src={`${values.img}`} width={'35rem'} alt="" /> </td>
-          <td scope="row"> {values.title} </td>
-          <td scope="row"> {values.class} </td>
-          <td scope="row"> {values.prevPrice}  DH</td>
+          <td scope="row"> {values.name} </td>
+          <td scope="row"> {values.telephone} </td>
+          <td scope="row"> {values.email} </td>
+          <td scope="row"> {values.message} </td>
+
 
           <td>
-            <a href={`/admin/voiture/${values.id}`} >
-          <i class="lni lni-cogs"></i>
-          
-
-            </a>
+            
           <a href="">
           <i onClick={()=>handleSupprimer(values.id)}  class="lni lni-trash-can"></i> 
-
+         
           </a>
 
           </td>
@@ -179,7 +184,7 @@ alert('Utilisateur Supprimer Bien')
     </tfoot>
   </table>
 </div>
-       
+
                        
             </main>
            

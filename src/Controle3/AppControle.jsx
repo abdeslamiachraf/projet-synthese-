@@ -20,6 +20,7 @@ import FormEditUtilisateur from './admin/FormEditUtilisateur.jsx';
 import Tutilisateur from './admin/Utilisateur.jsx';
 import Tvoiture from './admin/Tvoiture.jsx';
 import FormEditVoiture from './admin/FormEditVoiture.jsx';
+import TContact from './admin/TContact.jsx';
 
 
 export default function AppControle() {
@@ -62,10 +63,11 @@ export default function AppControle() {
                 <Route path="/user/voiture/:id" element={<CompteClient />} />
                 <Route path="/admin/:id" element={ <Dashboad />} />
                 <Route path="/admin/utilisateur/:id" element={ <FormEditUtilisateur />} />
-                <Route path="/admin/utilisateur" element={ < Tutilisateur />} />
-                <Route path="/admin/voiture" element={ < Tvoiture />} />
+                <Route path="/admin/utilisateurs/:id" element={ < Tutilisateur />} />
+                <Route path="/admin/voitures/:id" element={ < Tvoiture />} />
                 <Route path="/admin/voiture/:id" element={ <FormEditVoiture />} />
-
+                <Route path="/admin/contact/:id" element={ <TContact />} />
+                
                 
 
 

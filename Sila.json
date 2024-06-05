@@ -553,6 +553,21 @@
       "email": "bijbjijij@gmai.l.com",
       "password": "snsnlcnncsl",
       "id": "c143"
+    },
+    {
+      "id": "edfc",
+      "role": "client",
+      "username": "abdeslrahmen",
+      "email": "abdeslrahmen@gmail.com",
+      "password": "achraf123"
+    }
+  ],
+  "contact": [
+    {
+      "id": "9787",
+      "name": "blabla",
+      "email": "email@gmail.com",
+      "message": "bbbb"
     }
   ]
 }

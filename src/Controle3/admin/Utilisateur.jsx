@@ -60,26 +60,34 @@ alert('Utilisateur Supprimer Bien')
                 
             </div>
             <ul class="sidebar-nav">
-                <li class="sidebar-item">
-                    <Link to={`/admin`}class="sidebar-link">
+            <li class="sidebar-item">
+                    <Link to={`/admin/${id}`}class="sidebar-link">
                         <img src="../../page_admin_image/dashboard (1).svg" alt="" />
                         <span>Dashboard</span>
                     </Link>
                 </li>
                 <li class="sidebar-item">
-                    <Link to={`/admin/voiture`} class="sidebar-link">
+                    <Link to={`/admin/voitures/${id}`} class="sidebar-link">
                         <img src="../../page_admin_image/user-id-svgrepo-com (1).svg" alt="" />
 
                         <span> Voiture</span>
                     </Link>
                 </li>
                 <li class="sidebar-item">
-                    <Link to={`/admin/utilisateur`} class="sidebar-link">
+                    <Link to={`/admin/utilisateurs/${id}`} class="sidebar-link">
                         <img src="../../page_admin_image/user-profile-svgrepo-com.svg" alt="" />
 
                         <span> Utilisateur </span>
                     </Link>
                 </li>
+                <li class="sidebar-item">
+                    <Link to={`/admin/contact/${id}`} class="sidebar-link">
+                    <i class="lni lni-package w-10"></i>
+
+                        <span> Boite de Message </span>
+                    </Link>
+                </li>
+                
                 
                 
                
